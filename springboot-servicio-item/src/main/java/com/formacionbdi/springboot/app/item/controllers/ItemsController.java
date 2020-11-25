@@ -16,7 +16,7 @@ import java.util.List;
 public class ItemsController {
 
     @Autowired
-    @Qualifier("serviceFeign")
+    @Qualifier("serviceFeign") // Aqui le indicamos si queremos conectarnos al otro microservicio por Feign, o por RestTemplate.
     private IItemService itemServiceImpl;
 
     @GetMapping("/listItems")

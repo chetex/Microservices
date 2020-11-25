@@ -1,6 +1,6 @@
 package com.formacionbdi.springboot.app.productos.sprinbootservicioproductos.models.service;
 
-import com.formacionbdi.springboot.app.productos.sprinbootservicioproductos.models.dao.IProductoDao;
+import com.formacionbdi.springboot.app.productos.sprinbootservicioproductos.models.entity.IProductoRepository;
 import com.formacionbdi.springboot.app.productos.sprinbootservicioproductos.models.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,17 +12,17 @@ import java.util.List;
 public class ProductoService implements IProductoService {
 
     @Autowired
-    private IProductoDao iProductoDao;
+    private IProductoRepository iProductoRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<Producto> findAll() {
-        return (List<Producto>) iProductoDao.findAll();
+        return (List<Producto>) iProductoRepository.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
     public Producto findById(Long id) {
-        return iProductoDao.findById(id).orElse(null);
+        return iProductoRepository.findById(id).orElse(null);
     }
 }

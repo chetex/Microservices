@@ -21,14 +21,14 @@ public class ItemServiceImpl implements IItemService {
     @Override
     public List<Item> findAll() {
         // List<Producto> productoList = Arrays.asList(restTemplate.getForObject("http://localhost:8001/listProduct", Producto[].class));
-        List<Producto> productoList = Arrays.asList(restTemplate.getForObject("http://servicio-productos/listProduct", Producto[].class));
+        List<Producto> productoList = Arrays.asList(restTemplate.getForObject("http://servicio-productos/listProduct", Producto[].class)); // @RibbonClient(name = "servicio-productos")
         return productoList.stream().map(producto -> new Item(producto, 1)).collect(Collectors.toList());
     }
 
     @Override
     public Item findById(Long id, Integer cantidad) {
         // Producto producto = restTemplate.getForObject("http://localhost:8001/detalleProducto?id=" + id, Producto.class);
-        Producto producto = restTemplate.getForObject("http://servicio-productos/detalleProducto?id=" + id, Producto.class);
+        Producto producto = restTemplate.getForObject("http://servicio-productos/detalleProducto?id=" + id, Producto.class); // @RibbonClient(name = "servicio-productos")
         return new Item(producto, cantidad);
     }
 }

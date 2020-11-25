@@ -1,4 +1,4 @@
-package com.formacionbdi.springboot.app.item.clientes;
+package com.formacionbdi.springboot.app.item.api;
 
 import com.formacionbdi.springboot.app.item.models.Producto;
 import org.springframework.cloud.openfeign.FeignClient;
