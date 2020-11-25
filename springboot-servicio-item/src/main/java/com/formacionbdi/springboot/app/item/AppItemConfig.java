@@ -1,5 +1,6 @@
 package com.formacionbdi.springboot.app.item;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -8,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 public class AppItemConfig {
 
     @Bean
+    @LoadBalanced // Con esto, busca la mejor instancia para responsder. Si es la de Feigh, la usara,
+    // ... sino usa la de restTemplate
     public RestTemplate registrarRestTemplate() {
         return new RestTemplate();
     }

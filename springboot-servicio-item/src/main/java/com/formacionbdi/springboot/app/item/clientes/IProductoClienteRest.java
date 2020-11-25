@@ -12,7 +12,7 @@ import java.util.List;
  * connect with Product microservice given "application.properties" name and
  * the "url"
  */
-@FeignClient(name = "servicio-productos", url = "localhost:8001")
+@FeignClient(name = "servicio-productos")
 public interface IProductoClienteRest {
 
     @GetMapping("/listProduct")
