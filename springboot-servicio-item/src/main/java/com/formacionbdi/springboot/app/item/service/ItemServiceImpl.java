@@ -3,6 +3,7 @@ package com.formacionbdi.springboot.app.item.service;
 import com.formacionbdi.springboot.app.item.models.Item;
 import com.formacionbdi.springboot.app.item.models.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Primary // With it we said that now we are using Feign clients
 public class ItemServiceImpl implements IItemService {
 
     @Autowired

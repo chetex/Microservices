@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Create restController PRODUCT. It has the interface to connect with JPA data access
+ */
 @RestController
 public class ProductoController {
 
