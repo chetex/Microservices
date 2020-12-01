@@ -1,8 +1,10 @@
 package com.formacionbdi.springboot.app.item.controllers;
 
 import com.formacionbdi.springboot.app.item.models.Item;
+import com.formacionbdi.springboot.app.item.models.Producto;
 import com.formacionbdi.springboot.app.item.service.IItemService;
 import com.formacionbdi.springboot.app.item.service.ItemServiceImpl;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +26,29 @@ public class ItemsController {
         return itemServiceImpl.findAll();
     }
 
+    @HystrixCommand(fallbackMethod = "alternativeMethod")
     @GetMapping("/detalle")
     public Item detalle(@RequestParam Long id, @RequestParam Integer cantidad) {
         return itemServiceImpl.findById(id, cantidad);
+    }
+
+    /**
+     * Create new alternative method if hystic found error.
+     *
+     * @param id
+     * @param cantidad
+     * @return
+     */
+    public Item alternativeMethod(Long id, Integer cantidad) {
+        Item item = new Item();
+        Producto producto = new Producto();
+
+        item.setCantidad(cantidad);
+        producto.setId(id);
+        producto.setNombre("Camara sony");
+        producto.setPrecio(500.00);
+
+        item.setProducto(producto);
+        return item;
     }
 }

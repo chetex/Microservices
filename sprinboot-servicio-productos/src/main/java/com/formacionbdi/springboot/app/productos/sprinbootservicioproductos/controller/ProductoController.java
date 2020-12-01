@@ -37,10 +37,14 @@ public class ProductoController {
     }
 
     @GetMapping("/detalleProducto")
-    public Producto detalleProducto (@RequestParam Long id) {
+    public Producto detalleProducto (@RequestParam Long id) throws Exception {
         Producto producto = iProductoService.findById(id);
         // producto.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
         producto.setPort(port);
+//        boolean ok = false;
+//        if (!ok) {
+//            throw new Exception("No puedo cargar el producto");
+//        }
         return producto;
     }
 }
