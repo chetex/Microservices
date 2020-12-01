@@ -41,14 +41,18 @@ public class ItemsController {
      */
     public Item alternativeMethod(Long id, Integer cantidad) {
         Item item = new Item();
-        Producto producto = new Producto();
+        try {
+            Producto producto = new Producto();
 
-        item.setCantidad(cantidad);
-        producto.setId(id);
-        producto.setNombre("Camara sony");
-        producto.setPrecio(500.00);
+            item.setCantidad(cantidad);
+            producto.setId(id);
+            producto.setNombre("Metodo alternativo");
+            producto.setPrecio(500.00);
 
-        item.setProducto(producto);
+            item.setProducto(producto);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         return item;
     }
 }

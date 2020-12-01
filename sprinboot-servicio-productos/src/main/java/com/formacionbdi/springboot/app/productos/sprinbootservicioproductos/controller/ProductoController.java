@@ -41,6 +41,14 @@ public class ProductoController {
         Producto producto = iProductoService.findById(id);
         // producto.setPort(Integer.parseInt(environment.getProperty("local.server.port")));
         producto.setPort(port);
+
+        // (1) Podemos simular dormir los procesos
+        // Sleep the process
+        // En hystric, el timeout es de 1 segundo, por lo que va a ejecutar el fallback method
+//        Thread.sleep(2000L);
+
+        // (2) Simulamos un fallo en el proceso
+        // Forzamos un fallo
 //        boolean ok = false;
 //        if (!ok) {
 //            throw new Exception("No puedo cargar el producto");
