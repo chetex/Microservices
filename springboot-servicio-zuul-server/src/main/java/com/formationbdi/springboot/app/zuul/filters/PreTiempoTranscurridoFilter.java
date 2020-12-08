@@ -54,7 +54,6 @@ public class PreTiempoTranscurridoFilter extends ZuulFilter {
         Long tiempoInicio = System.currentTimeMillis();
         httpServletRequest.setAttribute("tiempoInicio", tiempoInicio);
 
-
         return null;
     }
 }
